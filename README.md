@@ -53,9 +53,9 @@ Home-Assistant running on HassOS on a Raspberry Pi 3 B
 Feel free to create issues for discussion and help for configuring your systems!
 
 ## Dashboard images
-<img src='https://github.com/arsaboo/homeassistant-config/blob/master/hass1.png'/> 
-<img src='https://github.com/arsaboo/homeassistant-config/blob/master/hass2.png'/> 
-<img src='https://github.com/arsaboo/homeassistant-config/blob/master/hass3.png'/> 
-<img src='https://github.com/arsaboo/homeassistant-config/blob/master/hass4.png'/> 
-<img src='https://github.com/arsaboo/homeassistant-config/blob/master/hass5.png'/> 
-<img src='https://github.com/arsaboo/homeassistant-config/blob/master/hass6.png'/>
+<img src='https://github.com/olaldiko/mendiaxpe_homeasistant_config/blob/master/hass1.png'/> 
+<img src='https://github.com/olaldiko/mendiaxpe_homeasistant_config/blob/master/hass2.png'/> 
+<img src='https://github.com/olaldiko/mendiaxpe_homeasistant_config/blob/master/hass3.png'/> 
+<img src='https://github.com/olaldiko/mendiaxpe_homeasistant_config/blob/master/hass4.png'/> 
+<img src='https://github.com/olaldiko/mendiaxpe_homeasistant_config/blob/master/hass5.png'/> 
+<img src='https://github.com/olaldiko/mendiaxpe_homeasistant_config/blob/master/hass6.png'/> 
