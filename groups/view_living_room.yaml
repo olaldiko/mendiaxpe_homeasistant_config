@@ -1,0 +1,67 @@
+############################################
+#           Living room view               #
+############################################
+
+living_room:
+    name: Sala
+    view: yes
+    icon: mdi:sofa
+    entities:
+        - group.living_room_lights
+        - group.living_room_ambient
+        - group.living_room_security
+        - group.living_room_media
+        - group.living_room_flower_sofa
+        - group.living_room_flower_balcon
+
+living_room_lights:
+    name: Iluminacion
+    entities:
+        - light.armario
+        - light.puerta
+        - light.tv
+        - input_boolean.automatizacion_luces_sala
+
+living_room_ambient:
+    name: Ambiente
+    entities:
+        - sensor.temperature_158d0001d6d0ae
+        - sensor.humidity_158d0001d6d0ae
+        - sensor.pressure_158d0001d6d0ae
+        - sensor.illumination_158d0001a3e268
+        - sensor.illumination_158d0001e43fef
+
+living_room_security:
+    name: Seguridad y movimiento
+    entities:
+        - binary_sensor.motion_sensor_158d0001a3e268
+        - binary_sensor.motion_sensor_158d0001e43fef
+        - binary_sensor.door_window_sensor_158d0001d685af
+        - binary_sensor.smoke_sensor_158d0001576b43
+
+living_room_flower_balcon:
+    name: Planta ventana balcon
+    entities:
+        - sensor.flower_balcon_battery
+        - sensor.flower_balcon_conductivity
+        - sensor.flower_balcon_light_intensity
+        - sensor.flower_balcon_moisture
+        - sensor.flower_balcon_temperature
+        - automation.plantas__humedad_por_debajo_de_20
+
+living_room_flower_sofa:
+    name: Planta ventana sofa
+    entities:
+        - sensor.flower_sofa_battery
+        - sensor.flower_sofa_conductivity
+        - sensor.flower_sofa_light_intensity
+        - sensor.flower_sofa_moisture
+        - sensor.flower_sofa_temperature
+        - automation.plantas__humedad_por_debajo_de_20       
+
+living_room_media:
+    name: Media
+    entities:
+        - media_player.spotify
+        - media_player.mendicast
+        - switch.sonoff_music_amplifier

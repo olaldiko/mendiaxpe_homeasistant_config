@@ -1,0 +1,109 @@
+- name: intrusion_alarm
+  entities:
+    light.tv:
+      state: on
+      flash: long
+      brightness_pct: 100
+      xy_color: [0.6531,0.2834]
+    light.puerta:
+      state: on
+      flash: long
+      brightness_pct: 100
+      xy_color: [0.6531,0.2834]
+    light.armario:
+      state: on
+      flash: long
+      brightness_pct: 100
+      xy_color: [0.6531,0.2834]
+    light.escaleras:
+      state: on
+      flash: long
+      brightness_pct: 100
+    light.balcon:
+      state: on
+      flash: long
+      brightness_pct: 100
+    light.cocina:
+      state: on
+      flash: long
+      brightness_pct: 100
+
+- name: fire_alarm
+  entities:
+    light.tv:
+      state: on
+      flash: long
+      brightness_pct: 100
+      xy_color: [0.6531,0.2834]
+    light.puerta:
+      state: on
+      flash: long
+      brightness_pct: 100
+      xy_color: [0.6531,0.2834]
+    light.armario:
+      state: on
+      flash: long
+      brightness_pct: 100
+      xy_color: [0.6531,0.2834]
+    light.escaleras:
+      state: on
+      flash: long
+      brightness_pct: 100
+    light.balcon:
+      state: on
+      flash: long
+      brightness_pct: 100
+    light.cocina:
+      state: on
+      flash: long
+      brightness_pct: 100
+
+- name: water_alarm
+  entities:
+    light.tv:
+      state: on
+      flash: long
+      brightness_pct: 100
+      xy_color: [0.136,0.04]
+    light.puerta:
+      state: on
+      flash: long
+      brightness_pct: 100
+      xy_color: [0.136,0.04]
+    light.armario:
+      state: on
+      flash: long
+      brightness_pct: 100
+      xy_color: [0.136,0.04]
+    light.escaleras:
+      state: on
+      flash: long
+      brightness_pct: 100
+    light.cocina:
+      state: on
+      flash: long
+      brightness_pct: 100
+
+- name: livingroom_watching_tv
+  entities:
+    light.tv:
+      state: on
+      brightness_pct: 70
+    light.puerta:
+      state: on
+      brightness_pct: 100
+    light.armario:
+      state: on
+      brightness_pct: 25
+
+- name: livingroom_normal
+  entities:
+    light.tv:
+      state: on
+      brightness_pct: 100
+    light.puerta:
+      state: on
+      brightness_pct: 100
+    light.armario:
+      state: on
+      brightness_pct: 100

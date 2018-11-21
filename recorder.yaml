@@ -1,0 +1,12 @@
+purge_keep_days: 15
+exclude:
+  entities:
+    - device_tracker.android667b5f3dabd3baea
+    - device_tracker.android4c2b1ad0c21ea236
+    - device_tracker.desktop8gvmc1e
+    - sensor.date
+    - sensor.date__time
+    - sensor.time
+    - sensor.time__date
+    - binary_sensor.workday_sensor
+    - sensor.since_last_boot

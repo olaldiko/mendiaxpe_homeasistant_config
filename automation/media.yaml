@@ -1,0 +1,22 @@
+#########################################
+#              Spotify                  #
+#########################################
+
+
+- alias: Power on amplifier if music playing in Hass.io
+  trigger:
+    platform: state
+    to: 'Hass.io'
+    entity_id: sensor.spotify_source
+  action:
+    service: switch.turn_on
+    entity_id: switch.sonoff_music_amplifier
+
+- alias: Power off amplifier if music not playing in Hass.io
+  trigger:
+    platform: state
+    from: 'Hass.io'
+    entity_id: sensor.spotify_source
+  action:
+    service: switch.turn_off
+    entity_id: switch.sonoff_music_amplifier

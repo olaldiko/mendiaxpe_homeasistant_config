@@ -1,0 +1,6 @@
+- platform: yeelight
+  devices:
+    <REDACTED>
+        name: Habitacion Gorka, ventana
+    <REDACTED>
+        name: Habitacion Gorka, puerta

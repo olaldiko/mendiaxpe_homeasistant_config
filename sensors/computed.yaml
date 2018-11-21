@@ -1,0 +1,106 @@
+- platform: template
+  sensors:
+    spotify_source:
+      value_template: '{{ states.media_player.spotify.attributes.source }}'
+    spotify_status:
+      value_template: '{{ states.media_player.spotify }}'
+#    battery_level_movement_kitchen:
+#      value_template: "{{ state_attr('binary_sensor.motion_sensor_158d0001d685af', 'battery_level') | float }}"
+#      friendly_name: 'Kitchen movement sensor battery level'
+#      unit_of_measurement: '%'
+#      device_class: battery
+#    battery_level_movement_living_room_1:
+#      value_template: "{{ state_attr('binary_sensor.motion_sensor_158d0001a3e268', 'battery_level') | float }}"
+#      friendly_name: 'Living room table zone movement sensor battery level'
+#      unit_of_measurement: '%'
+#      device_class: battery
+#    battery_level_movement_living_room_2:
+#      value_template: "{{ state_attr('binary_sensor.motion_sensor_158d0001e43fef', 'battery_level') | float }}"
+#      friendly_name: 'Living room sofa zone movement sensor battery level'
+#      unit_of_measurement: '%'
+#      device_class: battery
+#    battery_level_movement_living_room_3:
+#      value_template: "{{ state_attr('binary_sensor.motion_sensor_158d0001e43ff4', 'battery_level') | float }}"
+#      friendly_name: 'Living room gate zone movement sensor battery level'
+#      unit_of_measurement: '%'
+#      device_class: battery
+#    battery_level_movement_stairs:
+#      value_template: "{{ state_attr('binary_sensor.motion_sensor_158d0001e43fee', 'battery_level') | float }}"
+#      friendly_name: 'Stairs movement sensor battery level'
+#      unit_of_measurement: '%'
+#      device_class: battery
+#    battery_level_door_living_room:
+#      value_template: "{{ state_attr('binary_sensor.door_window_sensor_158d0001d685af', 'battery_level') | float }}"
+#      friendly_name: 'Living room door sensor battery level'
+#      unit_of_measurement: '%'
+#      device_class: battery
+#    battery_level_door_kitchen:
+#      value_template: "{{ state_attr('binary_sensor.door_window_sensor_158d0001d6844a', 'battery_level') | float }}"
+#      friendly_name: 'Kitchen door sensor battery level'
+#      unit_of_measurement: '%'
+#      device_class: battery
+#    battery_level_smoke_living_room:
+#      value_template: "{{ state_attr('binary_sensor.smoke_sensor_158d0001576b43', 'battery_level') | float }}"
+#      friendly_name: 'Living room smoke sensor battery level'
+#      unit_of_measurement: '%'
+#      device_class: battery
+#    battery_level_leak_bathroom:
+#      value_template: "{{ state_attr('binary_sensor.water_leak_sensor_158d0001d76d4e', 'battery_level') | float }}"
+#      friendly_name: 'Bathroom water leak sensor battery level'
+#      unit_of_measurement: '%'
+#      device_class: battery
+#    battery_level_leak_kitchen:
+#      value_template: "{{ state_attr('binary_sensor.water_leak_sensor_158d0001d781c7', 'battery_level') | float }}"
+#      friendly_name: 'Kitchen water leak sensor battery level'
+#      unit_of_measurement: '%'
+#      device_class: battery
+#    battery_level_temperature_balcony:
+#      value_template: "{{ state_attr('sensor.temperature_158d0001d36c6e', 'battery_level') | float }}"
+#      friendly_name: 'Balcony temperature sensor battery level'
+#      unit_of_measurement: '%'
+#      device_class: battery
+#    battery_level_temperature_gorka_bedroom:
+#      value_template: "{{ state_attr('sensor.temperature_158d0001d6cf7e', 'battery_level') | float }}"
+#      friendly_name: 'Gorka bedroom temperature sensor battery level'
+#      unit_of_measurement: '%'
+#      device_class: battery
+#    battery_level_temperature_brus_nai_bedroom:
+#      value_template: "{{ state_attr('sensor.temperature_158d0001d6dfa2', 'battery_level') | float }}"
+#      friendly_name: 'Brus & Nai bedroom temperature sensor battery level'
+#      unit_of_measurement: '%'
+#      device_class: battery
+#    battery_level_temperature_living_room:
+#      value_template: "{{ state_attr('sensor.temperature_158d0001d6d0ae', 'battery_level') | float }}"
+#      friendly_name: 'Living room temperature sensor battery level'
+#      unit_of_measurement: '%'
+#      device_class: battery
+#
+    
+- platform: min_max
+  name: Minimum temperature down flat
+  type: min
+  entity_ids:
+    - sensor.temperature_158d0002273c8f
+    - sensor.temperature_158d0001d6dfa2
+    - sensor.temperature_158d00022733be
+
+- platform: min_max
+  name: Minimum temperature middle flat
+  type: min
+  entity_ids:
+    - sensor.temperature_158d0001d6d0ae
+    - sensor.temperature_158d00022727f9
+
+- platform: min_max
+  name: Minimum temperature top flat
+  type:  min
+  entity_ids:
+    - sensor.temperature_158d0001d6cf7e
+
+- platform: min_max
+  name: Temperatura minima casa
+  type: min
+  entity_ids:
+    - sensor.minimum_temperature_down_flat
+    - sensor.minimum_temperature_middle_flat
+    - sensor.minimum_temperature_top_flat

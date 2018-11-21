@@ -1,0 +1,193 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Mendiaxpe
+  # Location required to calculate the time the sun rises and sets
+  latitude: <REDACTED>
+  longitude: <REDACTED>
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 650
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Madrid
+  # Customization file
+  customize: !include customize.yaml
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+logger:
+  default: info
+  logs:
+    homeassistant.components.mysensors: debug
+    mysensors: debug
+
+http:
+  # Secrets are defined in the file secrets.yaml
+  # api_password: !secret http_password
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+    api_password: !secret http_password
+    base_url: <REDACTED>
+    ssl_certificate: /config/certs/hass.crt
+    ssl_key: /config/certs/hass.key
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Track the sun
+sun:
+
+# Weather prediction
+weather:
+  - platform: yweather
+    woeid: 752669
+    name: Weather
+
+#Google Chromecast & Spotify
+cast:
+  media_player:
+    - host: <REDACTED>
+media_player:
+    - platform: spotify
+      client_id: !secret spotify_client_id
+      client_secret: !secret spotify_client_secret
+
+#ZoneMinder
+zoneminder:
+    host: <REDACTED>
+    username: homeassistant
+    password: !secret zoneminder_pass
+camera:
+    - platform: zoneminder 
+
+# Text to speech
+tts:
+  - platform: google
+    language: 'es'
+
+#Pushbullet main configuration
+notify:
+    - name: pb_main
+      platform: pushbullet
+      api_key: !secret pushbullet_api
+
+#Google Calendar
+google:
+    client_id: !secret gcal_client_id
+    client_secret: !secret gcal_client_pass
+
+#Ubiquity device tracker
+device_tracker:
+    - platform: unifi
+      host: <REDACTED>
+      username: hass
+      password: !secret unifi_password
+      site: MendiNet
+      verify_ssl: False
+
+#APCUPSD
+apcupsd:
+    host: <REDACTED>
+
+
+#Alarm
+alarm_control_panel:
+    - platform: manual
+      name: Alarma
+      code: !secret alarm_code
+
+#Xiaomi vacuum
+vacuum:
+  - platform: xiaomi_miio
+    host: <REDACTED>
+    token: !secret xm_vacuum_token
+
+#Xiaomi Aqara gateways
+xiaomi_aqara:
+  gateways:
+    - mac: !secret xm_gw1_mac
+      host: <REDACTED>
+      key: !secret xm_gw1_key
+    - mac: !secret xm_gw2_mac
+      host: <REDACTED>
+      key: !secret xm_gw2_key
+
+# MQTT
+mqtt:
+  broker: <REDACTED>
+  port: <REDACTED>
+  username: hass
+  password: !secret mqtt_password
+
+#MySensors Platform
+mysensors:
+  gateways:
+    - device: mqtt
+      persistence_file: '/config/mysensors.json'
+      topic_in_prefix: 'mygateway1-out'
+      topic_out_prefix: 'mygateway1-in'
+  optimistic: true
+  retain: true
+  version: 2.0
+
+# Emulated hue component
+emulated_hue:
+
+# Octoprint
+octoprint:
+  host: <REDACTED>
+  api_key: !secret octoprint_api_key
+  bed: true
+  number_of_tools: 1
+      
+
+# Hass cloud + Alexa
+cloud:
+  alexa:
+    filter:
+      include_entities: 
+        - light.armario
+        - light.tv
+        - light.puerta
+        - light.balcon
+        - light.escaleras
+        - light.habitacion_gorka_puerta
+        - light.habitacion_gorka_ventana
+        
+
+
+
+#Include custom UI inputs
+input_datetime: !include input_datetime.yaml
+input_boolean: !include input_boolean.yaml
+sensor: !include_dir_merge_list sensors/
+switch: !include switches.yaml
+binary_sensor: !include binary_sensors.yaml
+light: !include lights.yaml
+climate: !include climate.yaml
+group: !include_dir_merge_named groups
+scene: !include scenes.yaml
+automation: !include_dir_merge_list automation
+script: !include scripts.yaml
+recorder: !include recorder.yaml

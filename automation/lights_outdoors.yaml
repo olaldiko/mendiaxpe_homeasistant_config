@@ -1,0 +1,90 @@
+################################################
+#         Outdoor lights automation            #
+################################################
+
+#Outdoor balcony light - On at sunset
+- alias: Luz balcon - Encender al anochecer
+  trigger:
+    - event: sunset
+      offset: +00:30:00
+      platform: sun
+  condition:
+    - condition: state
+      entity_id: input_boolean.automatizacion_luces_exterior
+      state: 'on'
+  action:
+    - service: light.turn_on
+      entity_id: light.balcon
+
+
+#Outdoor balcony light - Off at workdays
+- alias: Luz balcon - Apagar en dias laborables
+  trigger:
+    - at: 00:30:00
+      platform: time
+  condition:
+    - condition: state
+      entity_id: binary_sensor.workday_sensor
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.automatizacion_luces_exterior
+      state: 'on'
+  action:
+    - service: light.turn_off  
+      entity_id: light.balcon
+      
+
+#Outdoor balcony light - Off at holidays
+- alias: Luz balcon - Apagar en dias festivos
+  trigger:
+    - at: 06:00:00
+      platform: time
+  condition:
+    - condition: state
+      entity_id: binary_sensor.workday_sensor
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.automatizacion_luces_exterior
+      state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.balcon
+      
+
+
+#Outdoor balcony light - On at workdays if night and at interval
+- alias: Luz balcon - Encender en intervalo de ir a trabajar si esta denoche
+  trigger:
+    platform: template
+    value_template: "{{ states('sensor.time') == (states.input_datetime.inicio_salida_trabajo.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}"
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: 'below_horizon'
+    - condition: state
+      entity_id: binary_sensor.workday_sensor
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.automatizacion_luces_exterior
+      state: 'on'
+  action:
+    - service: light.turn_on
+      entity_id: light.balcon
+      
+
+
+#Outdoor balcony light - Off at workdays after go to work interval
+- alias: Luz balcon - Apagar al terminar el intervalo de ir a trabajar
+  trigger:
+    platform: template
+    value_template: "{{ states('sensor.time') == (states.input_datetime.fin_salida_trabajo.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}"  
+  condition:
+    - condition: state
+      entity_id: binary_sensor.workday_sensor
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.automatizacion_luces_exterior
+      state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.balcon

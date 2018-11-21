@@ -1,0 +1,11 @@
+- platform: mqtt
+  name: "Sonoff music amplifier"
+  state_topic: "stat/sonoff-03/POWER"
+  command_topic: "cmnd/sonoff-03/POWER"
+  availability_topic: "tele/sonoff-03/LWT"
+  qos: 1
+  payload_on: "ON"
+  payload_off: "OFF"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  retain: false

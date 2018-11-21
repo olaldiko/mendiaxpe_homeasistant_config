@@ -1,0 +1,26 @@
+#######################################
+#           Security view             #
+#######################################
+seguridad:
+    name: Seguridad
+    view: yes
+    icon: mdi:security
+    entities: 
+        - alarm_control_panel.alarma
+        - binary_sensor.motion_sensor_158d0001a3e268
+        - binary_sensor.motion_sensor_158d0001e43fef
+        - binary_sensor.door_window_sensor_158d0001d685af
+        - binary_sensor.motion_sensor_158d0001e43fee
+        - binary_sensor.smoke_sensor_158d0001576b43
+        - sensor.entrada_status
+        - sensor.entrada_events
+        - camera.entrada
+        - sensor.rampa_status
+        - sensor.rampa_events
+        - camera.rampa
+        - automation.camara__notificacion_cuando_ha_cambiado_el_numero_de_eventos
+        - binary_sensor.motion_sensor_158d0001656bdc
+        - binary_sensor.door_window_sensor_158d0001d6844a
+        - binary_sensor.water_leak_sensor_158d0001d76d4e
+        - binary_sensor.water_leak_sensor_158d0001d781c7
+        

@@ -1,0 +1,41 @@
+- platform: generic_thermostat
+  name: Calefaccion piso abajo
+  heater: input_boolean.output_heater_down
+  target_sensor: sensor.minimum_temperature_down_flat
+  target_temp: 20
+  min_cycle_duration:
+    minutes: 5
+  cold_tolerance: 0.5
+  hot_tolerance: 0.0
+  keep_alive:
+    minutes: 10
+  initial_operation_mode: "off"
+  away_temp: 16
+
+- platform: generic_thermostat
+  name: Calefaccion piso medio
+  heater: input_boolean.output_heater_middle
+  target_sensor: sensor.minimum_temperature_middle_flat
+  target_temp: 20
+  min_cycle_duration:
+    minutes: 5
+  cold_tolerance: 0.5
+  hot_tolerance: 0.0
+  keep_alive:
+    minutes: 10
+  initial_operation_mode: "off"
+  away_temp: 16
+
+- platform: generic_thermostat
+  name: Calefaccion piso arriba
+  heater: input_boolean.output_heater_top
+  target_sensor: sensor.minimum_temperature_top_flat
+  target_temp: 20
+  min_cycle_duration:
+    minutes: 5
+  cold_tolerance: 0.5
+  hot_tolerance: 0.0
+  keep_alive:
+    minutes: 10
+  initial_operation_mode: "off"
+  away_temp: 16

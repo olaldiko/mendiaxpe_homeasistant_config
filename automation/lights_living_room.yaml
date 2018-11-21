@@ -1,0 +1,76 @@
+################################################
+#       Living room lights automation          #
+################################################
+
+# Living room lights - Turn on normal, all on scene when movement detected
+- alias: Luz sala - Encendido movimiento
+  trigger:
+    - entity_id: binary_sensor.motion_sensor_158d0001a3e268
+      platform: state
+      to: 'on'
+    - entity_id: binary_sensor.motion_sensor_158d0001e43fef
+      platform: state
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: input_boolean.automatizacion_luces_sala
+      state: 'on'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.livingroom_normal
+
+# Living room lights - Switch to watching tv scene if 
+# no movement detected at table zone for 5 minutes and movement at sofa zone
+- alias: Luz sala - Escena viendo la TV
+  trigger:
+    - entity_id: binary_sensor.motion_sensor_158d0001a3e268
+      platform: state
+      to: 'off'
+      for:
+        minutes: 5
+  condition:
+    - condition: and
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.motion_sensor_158d0001e43fef
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.automatizacion_luces_sala
+        state: 'on'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.livingroom_watching_tv
+
+
+#Living room lights - Turn off if no movement at both zones
+- alias: Luz sala - Apagar si no hay movimiento
+  trigger:
+    - entity_id: binary_sensor.motion_sensor_158d0001a3e268
+      platform: state
+      to: 'off'
+      for:
+        minutes: 5
+    - entity_id: binary_sensor.motion_sensor_158d0001e43fef
+      platform: state
+      to: 'off'
+      for:
+        minutes: 5
+  condition:
+    - condition: and
+      conditions:
+      - condition: state
+        entity_id: binary_sensor.motion_sensor_158d0001e43fef
+        state: 'off'
+      - condition: state
+        entity_id: binary_sensor.motion_sensor_158d0001a3e268
+        state: 'off'
+      - condition: state
+        entity_id: input_boolean.automatizacion_luces_sala
+        state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.armario
+    - service: light.turn_off
+      entity_id: light.tv
+    - service: light.turn_off
+      entity_id: light.puerta

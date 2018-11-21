@@ -1,0 +1,24 @@
+#######################################
+#       Gorka's Bedroom view          #
+#######################################
+
+bedroom_gorka:
+    name: Habitacion Gorka
+    icon: mdi:door
+    view: yes
+    entities:
+        - group.bedroom_gorka_sensors
+
+bedroom_gorka_sensors:
+    name: Sensores habitacion Gorka
+    entities:
+        - sensor.temperature_158d0001d6cf7e
+        - sensor.humidity_158d0001d6cf7e
+        - sensor.pressure_158d0001d6cf7e
+
+bedroom_gorka_lights:
+    name: Iluminacion habitacion Gorka
+    entities:
+        - light.habitacion_gorka_puerta
+        - light.habitacion_gorka_ventana
+

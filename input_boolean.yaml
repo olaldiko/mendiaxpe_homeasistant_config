@@ -1,0 +1,34 @@
+automatizacion_luces_sala:
+  name: Iluminacion sala automatica
+  initial: off
+  icon: mdi:robot
+automatizacion_luces_cocina:
+  name: Iluminacion cocina automatica
+  initial: on
+  icon: mdi:robot
+automatizacion_luces_exterior:
+  name: Iluminacion luces exterior automatica
+  initial: on
+  icon: mdi:robot
+automatizacion_luces_escalera:
+  name: Iluminacion luces escalera automatica
+  initial: on
+  icon: mdi:robot
+automatizacion_aspiradora:
+  name: Pasar aspiradora automaticamente segun calendario
+  initial: on
+  icon: mdi:robot
+
+output_heater_down:
+  name: Down heater output
+  initial: off
+
+output_heater_middle:
+  name: Middle heater output
+  initial: off
+
+output_heater_top:
+  name: Top heater output
+  initial: off
+  
+  

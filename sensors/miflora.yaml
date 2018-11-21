@@ -1,0 +1,22 @@
+- platform: miflora
+  mac: <REDACTED>
+  name: "Flower balcon"
+  force_update: false
+  median: 3
+  monitored_conditions:
+    - moisture
+    - light
+    - temperature
+    - conductivity
+    - battery
+- platform: miflora
+  mac: <REDACTED>
+  name: "Flower sofa"
+  force_update: false
+  median: 3
+  monitored_conditions:
+    - moisture
+    - light
+    - temperature
+    - conductivity
+    - battery

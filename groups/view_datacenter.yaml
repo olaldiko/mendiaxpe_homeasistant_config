@@ -1,0 +1,70 @@
+################################################
+#               Datacenter view                #
+################################################
+
+datacenter:
+    name: Datacenter
+    view: yes
+    icon: mdi:server
+    entities:
+        - group.datacenter_proliant
+        - group.datacenter_hass
+        - group.datacenter_winterfell
+        - group.datacenter_ups
+        - group.datacenter_xiaomigw
+
+datacenter_proliant:
+    name: ProLiant
+    entities:
+        - sensor.hp_ilo_proliant_power_status
+        - sensor.hp_ilo_ambient_temperature
+        - sensor.hp_ilo_cpu_1_temperature
+        - sensor.hp_ilo_cpu_2_temperature
+
+datacenter_hass:
+  name: RPi Hass
+  entities:
+    - sensor.processor_use
+    - sensor.memory_use_percent
+    - sensor.disk_use_percent_home
+    - sensor.since_last_boot
+
+datacenter_winterfell:
+  name: Winterfell Server
+  entities:
+    - sensor.winterfell_user_cpu_percent
+    - sensor.winterfell_system_cpu_percent
+    - sensor.winterfell_free_ram
+    - sensor.winterfell_disk_usage
+
+datacenter_ups:
+    name: UPS
+    entities:
+        - sensor.ups_status
+        - sensor.ups_battery
+        - sensor.ups_time_left
+        - sensor.ups_input_voltage
+        - sensor.ups_load
+        - sensor.ups_output_voltage
+        - sensor.ups_time_on_battery
+        - sensor.ups_transfer_count
+
+datacenter_xiaomigw:
+    name: Xiaomi gateway
+    entities:
+        - light.gateway_light_34ce009080bc
+        - sensor.illumination_34ce009080bc
+
+datacenter_ping:
+    name: Device conectivity
+    entities:
+        - binary_sensor.ping_camara_entrada
+        - binary_sensor.ping_winterfell
+        - binary_sensor.ping_camara_rampa
+        - binary_sensor.ping_hue_bridge
+        - binary_sensor.ping_xiaomi_gateway_1
+        - binary_sensor.ping_xiaomi_gateway_2
+        - binary_sensor.ping_unifi_ap
+        - binary_sensor.ping_alexa
+        - binary_sensor.ping_google_home
+        - binary_sensor.ping_xiaomi_vacuum

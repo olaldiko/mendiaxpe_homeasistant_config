@@ -1,0 +1,40 @@
+heating_view:
+  name: Calefaccion
+  view: yes
+  icon: mdi:radiator
+  entities:
+    - group.heating_view_heaters
+    - group.heating_view_temperatures
+    - group.heating_view_automations
+    - group.heating_view_main_heater
+
+
+
+heating_view_heaters:
+  name: Calefaccion por pisos
+  entities:
+    - climate.calefaccion_piso_abajo
+    - climate.calefaccion_piso_medio
+    - climate.calefaccion_piso_arriba
+
+heating_view_temperatures:
+  name: Temperaturas minimas por pisos
+  entities:
+    - sensor.minimum_temperature_down_flat
+    - sensor.minimum_temperature_middle_flat
+    - sensor.minimum_temperature_top_flat
+
+heating_view_automations:
+  name: Automatizaciones calefaccion
+  entities:
+    - automation.update_real_heater_with_combined_sensor_status
+
+heating_view_main_heater:
+  name: Caldera
+  entities:
+    - sensor.caldera_1_0
+    - sensor.caldera_1_1
+    - sensor.caldera_1_2
+    - binary_sensor.heater_combined
+    - switch.caldera_1_3
+

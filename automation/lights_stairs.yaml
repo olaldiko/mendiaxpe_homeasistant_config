@@ -1,0 +1,37 @@
+##################################################
+#           Stairs lights automation             #
+##################################################
+
+#Stair light - Turn on when movenent and low light
+- alias: Luz escalera - Encender con movimento
+  trigger:
+    - entity_id: binary_sensor.motion_sensor_158d0001e43fee
+      from: 'off'
+      platform: state
+      to: 'on'
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.illumination_158d0001e43fee
+      below: '15'
+    - condition: state
+      entity_id: input_boolean.automatizacion_luces_escalera
+      state: 'on'
+  action:
+    - service: light.turn_on
+      entity_id: light.escaleras
+      
+
+# Stair light - Turn off if no movement
+- alias: Luz escalera - Apagar cuando no hay movimiento
+  trigger:
+    - entity_id: binary_sensor.motion_sensor_158d0001e43fee
+      from: 'on'
+      platform: state
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: input_boolean.automatizacion_luces_escalera
+      state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.escaleras

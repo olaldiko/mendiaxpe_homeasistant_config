@@ -1,0 +1,43 @@
+- platform: snmp
+  host: <REDACTED>
+  community: hass
+  baseoid: 1.3.6.1.4.1.2021.11.9.0
+  version: 2c
+  name: Winterfell User CPU Percent
+  unit_of_measurement: '%'
+
+- platform: snmp
+  host: <REDACTED>
+  community: hass
+  baseoid: 1.3.6.1.4.1.2021.11.10.0
+  version: 2c
+  name: Winterfell System CPU Percent
+  unit_of_measurement: '%'
+
+- platform: snmp
+  host: <REDACTED>
+  community: hass
+  baseoid: 1.3.6.1.4.1.2021.4.11.0
+  version: 2c
+  name: Winterfell Free RAM
+  unit_of_measurement: 'Mb'
+  value_template: '{{((value | int) / 1024) | int}}'
+
+- platform: snmp
+  host: <REDACTED>
+  community: hass
+  baseoid: 1.3.6.1.4.1.2021.9.1.9.1
+  version: 2c
+  name: Winterfell Disk Usage
+  unit_of_measurement: '%'
+
+- platform: apcupsd
+  resources:
+      - bcharge
+      - linev
+      - loadpct
+      - numxfers
+      - outputv
+      - status
+      - timeleft
+      - tonbatt

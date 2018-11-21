@@ -1,0 +1,16 @@
+#######################################
+#   Zuazola & Naiara's Kitchen view   #
+#######################################
+
+kitchen_brus_nai:
+  name: Cocina ZN
+  view: yes
+  entities:
+    - group.kitchen_brus_nai_ambient
+
+kitchen_brus_nai_ambient:
+  name: Ambiente
+  entities:
+    - sensor.temperature_158d00022733be
+    - sensor.humidity_158d00022733be
+    - sensor.pressure_158d00022733be

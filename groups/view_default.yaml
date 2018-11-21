@@ -1,0 +1,93 @@
+default_view:
+    view: yes
+    icon: mdi:home
+    entities:
+      - group.dv_lights_indoor
+      - group.dv_lights_outdoor
+      - group.dv_cameras_outdoor
+      - group.dv_ambient_indoor
+      - group.dv_ambient_outdoor
+      - group.dv_mov_door_sensors
+      - group.dv_water_fire_sensors
+      - group.dv_vacuums
+      - group.dv_climate
+      - weather.tiempo_araia
+      - media_player.spotify
+
+dv_lights_indoor:
+  name: Iluminacion interior
+  entities:
+    - light.armario
+    - light.tv
+    - light.puerta
+    - light.escaleras
+    - light.cocina
+    - light.habitacion_gorka_puerta
+    - light.habitacion_gorka_ventana
+
+
+dv_ambient_indoor:
+  name: Ambiente interior
+  entities:
+    - sensor.temperature_158d0001d6d0ae # Sala
+    - sensor.humidity_158d0001d6d0ae    # Sala
+    - sensor.temperature_158d0002273c8f # Sala ZN
+    - sensor.humidity_158d0002273c8f    # Sala ZN
+    - sensor.temperature_158d0001d6cf7e # Habitacion Gorka
+    - sensor.humidity_158d0001d6cf7e    # Habitacion Gorka
+    - sensor.temperature_158d00022727f9 # Cocina
+    - sensor.humidity_158d00022727f9    # Cocina
+
+dv_mov_door_sensors:
+  name: Sensores movimiento y puertas
+  entities:
+    - binary_sensor.motion_sensor_158d0001a3e268       # Sala
+    - binary_sensor.motion_sensor_158d0001e43fef       # Sala
+    - binary_sensor.door_window_sensor_158d0001d685af  # Sala
+    - binary_sensor.motion_sensor_158d0001656bdc       # Cocina
+    - binary_sensor.door_window_sensor_158d0001d6844a  # Cocina
+    - binary_sensor.motion_sensor_158d0001e43fee       # Escaleras
+
+dv_water_fire_sensors:
+  name: Sensores fugas e incendios
+  entities:
+    - binary_sensor.smoke_sensor_158d0001576b43       # Sala
+    - binary_sensor.water_leak_sensor_158d0001d781c7  # Bano
+    - binary_sensor.water_leak_sensor_158d0001d76d4e  # Cocina
+
+dv_ambient_outdoor:
+  name: Ambiente exterior
+  entities:
+    - sensor.humidity_158d0001d36c6e    # Balcon
+    - sensor.pressure_158d0001d36c6e    # Balcon
+    - sensor.temperature_158d0001d36c6e # Balcon
+
+dv_lights_outdoor:
+  name: Iluminacion exterior
+  entities:
+    - light.balcon
+
+dv_cameras_outdoor:
+  name: Camaras exterior
+  entities:
+    - sensor.entrada_status
+    - sensor.entrada_events
+    - camera.entrada
+    - sensor.rampa_status
+    - sensor.rampa_events
+    - camera.rampa
+
+
+dv_vacuums:
+  name: Aspiradoras
+  entities:
+    - vacuum.xiaomi_vacuum_cleaner
+    - input_boolean.automatizacion_aspiradora
+
+dv_climate:
+    name: Calefaccion
+    entities:
+        - climate.calefaccion_piso_abajo
+        - climate.calefaccion_piso_medio
+        - climate.calefaccion_piso_arriba
+        - sensor.caldera_1_3

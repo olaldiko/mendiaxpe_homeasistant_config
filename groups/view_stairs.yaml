@@ -1,0 +1,24 @@
+##########################################
+#             Stairs view                #
+##########################################
+
+stairs:
+    name: Escaleras
+    view: yes
+    icon: mdi:stairs
+    entities:
+        - group.stairs_sensors
+        - group.stairs_lights    
+
+stairs_sensors:
+    name: Sensores Escaleras
+    entities:
+        - binary_sensor.motion_sensor_158d0001e43fee
+        - sensor.illumination_158d0001e43fee
+
+stairs_lights:
+    name: Iluminacion escaleras
+    entities:
+        - light.escaleras
+        - automation.luz_escalera_noche_off
+        - automation.luz_escalera_noche_on

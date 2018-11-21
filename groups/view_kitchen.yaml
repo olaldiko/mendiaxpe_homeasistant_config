@@ -1,0 +1,33 @@
+#######################################
+#           Kitchen view              #
+#######################################
+
+kitchen:
+    name: Cocina
+    view: yes
+    icon: mdi:food-fork-drink
+    entities:
+        - group.kitchen_lights
+        - group.kitchen_ambient
+        - group.kitchen_sensors
+
+kitchen_lights:
+    name: Iluminacion
+    entities:
+        - light.cocina 
+        - input_boolean.automatizacion_luces_cocina
+
+kitchen_ambient:
+  name: Ambiente
+  entities:
+    - sensor.temperature_158d00022727f9
+    - sensor.humidity_158d00022727f9
+    - sensor.pressure_158d00022727f9
+
+kitchen_sensors:
+    name: Sensores
+    entities:
+        - sensor.illumination_158d0001656bdc
+        - binary_sensor.motion_sensor_158d0001656bdc
+        - binary_sensor.door_window_sensor_158d0001d6844a
+        - binary_sensor.water_leak_sensor_158d0001d76d4e

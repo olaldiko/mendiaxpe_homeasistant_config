@@ -1,0 +1,40 @@
+#####################################
+#         Outdoors view             #
+#####################################
+
+outdoor:
+    name: Exterior
+    view: yes
+    icon: mdi:tree
+    entities:
+        - group.outdoor_lights
+        - group.outdoor_sensors
+        - group.outdoor_cameras
+        - weather.tiempo_araia
+        - weather.tiempo_mondra
+
+outdoor_sensors:
+    name: Sensores
+    entities:
+        - sensor.humidity_158d0001d36c6e
+        - sensor.pressure_158d0001d36c6e
+        - sensor.temperature_158d0001d36c6e
+
+outdoor_cameras:
+    name: Camaras
+    entities:
+        - sensor.entrada_status
+        - sensor.entrada_events
+        - camera.entrada
+        - sensor.rampa_status
+        - sensor.rampa_events
+        - camera.rampa
+
+outdoor_lights:
+    name: Iluminacion
+    entities:
+        - light.balcon
+        - input_boolean.automatizacion_luces_exterior
+        - input_datetime.inicio_salida_trabajo
+        - input_datetime.fin_salida_trabajo
+

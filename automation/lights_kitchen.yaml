@@ -1,0 +1,37 @@
+#########################################
+#       Kitchen lights automation       #
+#########################################
+
+# Kitchen - On when movement and low light
+- alias: Luz cocina - Encendido movimiento
+  trigger:
+    - entity_id: binary_sensor.motion_sensor_158d0001656bdc
+      platform: state
+      to: 'on'
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.illumination_158d0001656bdc
+      below: '15'
+    - condition: state
+      entity_id: input_boolean.automatizacion_luces_cocina
+      state: 'on'
+  action:
+    - service: light.turn_on
+      entity_id: light.cocina
+
+
+#kitchen - Off when no movement for 5 minutes
+- alias: Luz cocina - Apagado si no hay movimiento en 5 minutos
+  trigger:
+    - entity_id: binary_sensor.motion_sensor_158d0001656bdc
+      platform: state
+      to: 'off'
+      for:
+        minutes: 5
+  condition:
+    - condition: state
+      entity_id: input_boolean.automatizacion_luces_cocina
+      state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.cocina

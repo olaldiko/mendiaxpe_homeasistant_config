@@ -1,0 +1,16 @@
+################################################
+#       Zuazola & Naiara's Bedroom view        #
+################################################
+
+bedroom_brus_nai:
+    name: Habitacion ZN
+    view: yes
+    entities:
+        - group.bedroom_brus_nai_ambient
+
+bedroom_brus_nai_ambient:
+    name: Ambiente
+    entities:
+        - sensor.temperature_158d0001d6dfa2
+        - sensor.humidity_158d0001d6dfa2
+        - sensor.pressure_158d0001d6dfa2

@@ -1,0 +1,17 @@
+#########################################
+#       Home appliances automation      #
+#########################################
+
+# Xiaomi Vacuum
+- alias: Pasar la aspiradora cuando este marcado en el calendario
+  trigger:
+    - entity_id: calendar.hass__aspiradora
+      platform: state
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: input_boolean.automatizacion_aspiradora
+      state: 'on'
+  action:
+    - service: vacuum.turn_on
+      entity_id: vacuum.xiaomi_vacuum_cleaner

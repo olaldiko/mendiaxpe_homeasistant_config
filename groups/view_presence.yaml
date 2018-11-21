@@ -1,0 +1,33 @@
+#######################################
+#           Presence view             #
+#######################################
+
+presence:
+    name: Presencia
+    icon: mdi:walk
+    view: yes
+    entities:
+      - group.presence_devices
+      - group.presence_phones
+      - group.presence_laptops
+
+presence_devices:
+    name: Dispositivos
+    entities:
+      - device_tracker.chromecast
+      - device_tracker.lumigatewayv3_miio57832559
+
+presence_phones:
+    name: Telefonos
+    entities:
+      - device_tracker.androidf9810976ab60e6b7
+      - device_tracker.android667b5f3dabd3baea
+      - device_tracker.android4c2b1ad0c21ea236
+
+
+presence_laptops:
+    name: Portatiles
+    entities:
+      - device_tracker.mbpdegorka
+      - device_tracker.mbpdemaria
+      - device_tracker.desktop8gvmc1e

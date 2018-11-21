@@ -1,0 +1,33 @@
+##########################################
+#   Alarm & Security automations         #
+##########################################
+
+
+########## Fire alarm automation ########################
+- alias: Alarma Humos alerta pushbullet
+  trigger:
+  - entity_id: binary_sensor.smoke_sensor_158d0001576b43
+    platform: state
+    to: 'on'
+  action:
+  - service: notify.pb_main
+    data_template:
+      title: Alarma de incendios
+      message: Humo detectado en la sala!
+  - service: scene.turn_on
+    entity_id: scene.fire_alarm
+
+
+########## Water leak alarm automation####################
+- alias: Alarma fugas agua alerta Pushbullet
+  trigger:
+  - entity_id: binary_sensor.water_leak_sensor_158d0001d781c7
+    platform: state
+    to: 'on'
+  action:
+  - service: notify.pb_main
+    data_template:
+      title: Fuga de agua detectada
+      message: El sensor de fugas de la lavadora ha detectado agua!
+  - service: scene.turn_on
+    entity_id: scene.water_alarm

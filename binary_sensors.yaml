@@ -1,0 +1,72 @@
+- platform: workday
+  country: ES
+- platform: ping
+  name: Ping Hue Bridge
+  host: <REDACTED>
+- platform: ping
+  name: Ping Camara Entrada
+  host: <REDACTED>
+- platform: ping
+  name: Ping Camara Rampa   # Camara IP Rampa
+  host: <REDACTED>
+- platform: ping
+  name: Xiaomi Vacuum
+  host: <REDACTED>
+- platform: ping
+  name: Unifi AP
+  host: <REDACTED>
+- platform: ping
+  name: Alexa
+  host: <REDACTED>
+- platform: ping
+  name: Google Home
+  host: <REDACTED>
+- platform: ping
+  name: Ping Xiaomi Gateway 1
+  host: <REDACTED>
+- platform: ping
+  name: Ping Xiaomi Gateway 2
+  host: <REDACTED>
+- platform: ping
+  name: Ping Winterfell
+  host: <REDACTED>
+- platform: 'bayesian'
+  name: 'Intrusion'
+  prior: 0
+  probability_threshold: 0.5
+  observations:
+    - entity_id: 'binary_sensor.door_window_sensor_158d0001d6844a'
+      prob_given_true: 1
+      platform: 'state'
+      to_state: 'on'
+    - entity_id: 'binary_sensor.door_window_sensor_158d0001d685af'
+      prob_given_true: 1
+      platform: 'state'
+      to_state: 'on'
+    - entity_id: binary_sensor.motion_sensor_158d0001656bdc # Movimiento cocina
+      prob_given_true: 0.7
+      platform: 'state'
+      to_state: 'on'
+    - entity_id: binary_sensor.motion_sensor_158d0001a3e268 # Movimiento sala - zona mesa
+      prob_given_true: 0.7
+      platform: 'state'
+      to_state: 'on'
+    - entity_id: binary_sensor.motion_sensor_158d0001e43fee # Movimiento escalera
+      prob_given_true: 0.55
+      platform: 'state'
+      to_state: 'on'
+    - entity_id: binary_sensor.motion_sensor_158d0001e43fef # Movimiento sala - zona sofa
+      prob_given_true: 0.65
+      platform: 'state'
+      to_state: 'on'
+    - entity_id: binary_sensor.motion_sensor_158d0001e43ff4 # Movimiento sala - zona puerta
+      prob_given_true: 0.65
+      platform: 'state'
+      to_state: 'on'
+
+- platform: template
+  sensors:
+   heater_combined:
+        value_template: "{{ is_state('input_boolean.output_heater_down', 'on') 
+                            or is_state('input_boolean.output_heater_middle', 'on') 
+                            or is_state('input_boolean.output_heater_top', 'on')}}"

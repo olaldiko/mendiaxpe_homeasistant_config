@@ -1,0 +1,17 @@
+##########################################
+#           Bathroom 1 view              #
+##########################################
+
+bathroom1:
+    name: Bano 1
+    icon: mdi:duck
+    view: yes
+    entities:
+        - group.bathroom1_water_leak
+
+bathroom1_water_leak:
+    name: Sensor fugas
+    entities:
+        - binary_sensor.water_leak_sensor_158d0001d781c7
+        - automation.alarma_fugas_agua_alerta_pushbullet
+

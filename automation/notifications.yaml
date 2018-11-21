@@ -1,0 +1,78 @@
+##########################################
+#   General notification automations     #
+##########################################
+
+
+######## UPS state changes ###################
+- alias: UPS Cambio de Online a x Pushbullet
+  trigger:
+  - entity_id: sensor.ups_status
+    from: ONLINE
+    platform: state
+  action:
+    service: notify.pb_main
+    data_template:
+      title: Cambio de estado UPS
+      message: 'El UPS ha cambiado el estado de ONLINE a {{ states.sensor.ups_status.state
+        }}, voltage de entrada: {{ states.sensor.ups_input_voltage.state }}'
+
+- alias: UPS Cambio de x a ONLINE
+  trigger:
+  - entity_id: sensor.ups_status
+    platform: state
+    to: ONLINE
+  action:
+  - service: notify.pb_main
+    data_template:
+      title: Cambio de estado UPS
+      message: 'El UPS ha cambiado su estado a ONLINE, voltage de entrada: {{ states.sensor.ups_input_voltage.state
+        }}'
+
+
+################# Plant watering notifications #########################
+
+- alias: Plantas - Humedad por debajo de 20%
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.flower_sofa_moisture
+      below: '20'
+      for:
+        hours: 24
+    - platform: numeric_state
+      entity_id: sensor.flower_balcon_moisture
+      below: '20'
+      for:
+        hours: 24
+  action:
+    - service: notify.pb_main
+      data_template:
+        title: Riego de plantas
+        message: 'Plantas por debajo de umbral de humedad. 
+        Planta balcon: {{ states.sensor.flower_balcon_moisture.state }}% 
+        Planta sofa: {{ states.sensor.flower_sofa_moisture.state }}%'
+
+
+######################## Octoprint notifications ########################
+
+- alias: Octoprint - Notificacion cuando va a terminar la impresion
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.octoprint_job_percentage
+      above: '99.8'
+  action:
+    - service: notify.pb_main
+      data_template:
+        title: Impresion 3D
+        message: 'La impresora esta a punto de terminar la impresion.'
+
+################## Camera movement detection alert #####################
+
+- alias: Camara - Notificacion cuando ha cambiado el numero de eventos
+  trigger:
+    - platform: state
+      entity_id: sensor.entrada_events
+  action:
+    - service: notify.pb_main
+      data_template:
+        title: Camara entrada
+        message: 'El numero de eventos de la camara de entrada ha cambiado'

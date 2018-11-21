@@ -1,0 +1,62 @@
+##############################################
+#          Automation control view           #
+##############################################
+
+automation:
+    name: Automatizacion
+    view: yes
+    icon: mdi:robot
+    entities:
+        - group.automation_vacuums
+        - group.automation_printers
+        - group.all_automations
+        - group.automation_calendars
+        - group.automation_climate
+
+automation_calendars:
+    name: Calendarios
+    entities:
+        - calendar.campus_virtual
+        - calendar.hass__calefaccion
+        - calendar.hass__luz_balcon
+
+automation_vacuums:
+    name: Aspiradoras
+    entities:
+        - vacuum.xiaomi_vacuum_cleaner
+        - input_boolean.automatizacion_aspiradora
+
+automation_printers:
+    name: Impresora 3D
+    entities:
+        - sensor.octoprint_current_state
+        - sensor.octoprint_job_percentage
+        - sensor.octoprint_actual_tool0_temp
+        - sensor.octoprint_actual_bed_temp
+
+automation_climate:
+    name: Calefaccion
+    entities:
+        - climate.calefaccion
+        - sensor.caldera_1_0
+        - sensor.caldera_1_1
+        - sensor.caldera_1_2
+        - sensor.caldera_1_3
+
+automation_battery:
+    name: Battery Levels
+    entities:
+        - sensor.battery_level_movement_kitchen
+        - sensor.battery_level_movement_living_room_1
+        - sensor.battery_level_movement_living_room_2
+        - sensor.battery_level_movement_living_room_3
+        - sensor.battery_level_movement_stairs
+        - sensor.battery_level_door_living_room
+        - sensor.battery_level_door_kitchen
+        - sensor.battery_level_smoke_living_room
+        - sensor.battery_level_leak_bathroom
+        - sensor.battery_level_leak_kitchen
+        - sensor.battery_level_temperature_balcony
+        - sensor.battery_level_temperature_gorka_bedroom
+        - sensor.battery_level_temperature_brus_nai_bedroom
+        - sensor.battery_level_temperature_living_room

@@ -1,0 +1,9 @@
+inicio_salida_trabajo:
+  name: Inicio hora de salida al trabajo
+  has_date: false
+  has_time: true
+
+fin_salida_trabajo:
+  name: Fin hora de salida al trabajo
+  has_date: false
+  has_time: true
